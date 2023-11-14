@@ -1,6 +1,5 @@
 package com.rawtech.Spring.Security.Tutorial.auth;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
