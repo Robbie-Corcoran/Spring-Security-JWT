@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Base64;
+import java.util.function.Function;
 
 @Service
 public class JWTService {
@@ -18,12 +19,17 @@ public class JWTService {
         return null;
     }
 
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
+    }
+
     private Claims extractAllClaims (String token) {
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignInKey())
                 .build()
-                .parseClaimsJws()
+                .parseClaimsJws(token)
                 .getBody();
     }
 
