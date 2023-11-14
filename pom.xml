@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.rawtech</groupId>
-	<artifactId>Spring-Security-Tutorial</artifactId>
+	<artifactId>Spring-Security-JWT</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Spring-Security-Tutorial</name>
 	<description>Demo project for Spring Boot Security</description>
