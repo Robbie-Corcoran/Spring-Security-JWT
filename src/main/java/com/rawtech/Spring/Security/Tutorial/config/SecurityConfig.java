@@ -26,13 +26,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests((requests) -> requests.requestMatchers("api/v1/auth/**").permitAll().anyRequest().authenticated())
-            .authorizeHttpRequests((requests) -> ((AuthorizeHttpRequestsConfigurer.AuthorizedUrl) requests.anyRequest()).authenticated())
-            .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(requests ->
+                    requests.requestMatchers("api/v1/auth/**")
+                            .permitAll()
+                            .anyRequest()
+                            .authenticated())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-//            .httpBasic(Customizer.withDefaults())
-//            .formLogin(Customizer.withDefaults());
         return http.build();
     }
 
