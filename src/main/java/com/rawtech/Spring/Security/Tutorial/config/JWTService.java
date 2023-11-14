@@ -17,7 +17,7 @@ import java.util.function.Function;
 @Service
 public class JWTService {
 
-    private static final String SECRET_KEY = "E2rqQhqIQt4Z+D/SqiFa8WiDWHk1vbynrUdih6k27y/pUjj5QfvENULyfJ5HCXi2PS2aKPFFSQR2bCRIFYrDoPcsMOfz6Q8iJf8Olc6I4PdTU6iNpQOylcft/SRdlcoSq8UlFP1Z1bfiDwr/BQ3xjaTGM31MoJXP3ajuqL50RwZpqmIsz7TBpR+a5mxaqoy6Nq+tZc/ZNZqJykle7GqzgCndinWrfIGoS8lxtj+eQOINO75/getBoknaCuCFTpwAHuxflma/GiCCALZxuPxjsRpWo0V6N9o/OG5aGTVCG/Uxo3+9H6xaxp2pGyx/FaDXmFfyenvo/F8YBOb73mK3eT+pb4qQzJhRHwhRiT2qZBk=\n";
+    private static final String SECRET_KEY = "E2rqQhqIQt4Z+D/SqiFa8WiDWHk1vbynrUdih6k27y/pUjj5QfvENULyfJ5HCXi2PS2aKPFFSQR2bCRIFYrDoPcsMOfz6Q8iJf8Olc6I4PdTU6iNpQOylcft/SRdlcoSq8UlFP1Z1bfiDwr/BQ3xjaTGM31MoJXP3ajuqL50RwZpqmIsz7TBpR+a5mxaqoy6Nq+tZc/ZNZqJykle7GqzgCndinWrfIGoS8lxtj+eQOINO75/getBoknaCuCFTpwAHuxflma/GiCCALZxuPxjsRpWo0V6N9o/OG5aGTVCG/Uxo3+9H6xaxp2pGyx/FaDXmFfyenvo/F8YBOb73mK3eT+pb4qQzJhRHwhRiT2qZBk=";
 
     public String extractUsername(String jwtToken) {
         return extractClaim(jwtToken, Claims::getSubject);
@@ -27,7 +27,6 @@ public class JWTService {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
-
     public String generateToken(UserDetails userDetails) {
         return generateToken(new HashMap<>(), userDetails);
     }
